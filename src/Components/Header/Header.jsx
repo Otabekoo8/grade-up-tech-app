@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
+import { NavLink } from "react-router-dom";
 import logo from "../../assets/image/logo.png";
 import person from "../../assets/image/person.svg";
-import { NavLink } from "react-router-dom";
 import pause from "../../assets/image/pause.png";
 import "./Header.css";
-
 
 function Headers() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -14,56 +13,46 @@ function Headers() {
   };
 
   return (
-    <div>
-        <div className="header xl:w-full xl:h-[60vh] bg-[#D2E6E4] rounded-b-[35px] w-[100%] h-[80vh] md:w-[100%] md:h-[40vh]">
-            <div className="container mx-auto">
-                <div className="header-inner xl:w-[100%] xl:h-[60vh] w-[100%] h-[60vh] md:w-[100%] md:h-[40vh]">
-                    <div className="navbar xl:w-[100%] xl:h-[100px] flex xl:justify-between items-center flex-wrap  w-[100%] h-[70px] md:w-[100%] md:h-[100px] md:justify-between">
-                        <div className="logo w-[150px] h-[50px]">
-                            <img src={logo} alt="Logo" className="xl:w-[150px] xl:h-[50px] w-[130px] h-[40px] m-5"/>
-                        </div>
-                        <div className="link xl:w-[350px] hidden xl:flex gap-8 font-bold text-[16px] xl:ml-[250px]">
-                            <NavLink to="">Bosh sahifa</NavLink>
-                            <NavLink to="">Kariyeramiz</NavLink>
-                            <NavLink to="">Biz haqimizda</NavLink>   
-                        </div>
-                        <div className="btn xl:w-[400px] xl:h-[100px] flex items-center gap-7 pt-[20px]">
-                            <button className="xl:w-[130px] bg-[#77BF44] text-[#fff] font-bold rounded-lg w-[85px] h-[50px] ml-[45px] md:w-[120px]">Online kurs</button>
-                            <i onClick={toggleMenu} className='bx bx-menu xl:hidden text-[35px] font-bold text-[#6B7280] cursor-pointer'></i>
-                            <div className="phone xl:flex xl:items-center hidden">
-                                <i className='bx bx-phone text-[#6B7280] font-bold text-[22px]'></i>
-                                <p className="xl:text-[20px] text-[#6B7280]">+998913604254</p>
-                            </div>
-                        </div>
-                    </div>
-                    {menuOpen && (
-                      <div className="mobile-menu flex flex-col gap-4 items-center mt-4">
-                        <NavLink to="">Bosh sahifa</NavLink>
-                        <NavLink to="">Kariyeramiz</NavLink>
-                        <NavLink to="">Biz haqimizda</NavLink>
-                        <div className="phone flex items-center">
-                          <i className='bx bx-phone text-[#6B7280] font-bold text-[22px]'></i>
-                          <p className="text-[20px] text-[#6B7280]">+998913604254</p>
-                        </div>
-                      </div>
-                    )}
-                    <div className="section xl:w-full xl:flex xl:justify-between flex flex-col md:w-full md:flex md:justify-between">
-                        <div className="main1">
-                            <div className="text xl:w-[400px] xl:h-[43px] bg-[#fff] text-center font-bold pt-1 xl:text-[20px] ml-[20px] mt-[80px] xl:rounded-2xl xl:m-10 w-[250px] h-[30px] rounded-lg text-[13px]">Hech qachon o`rganishni to`xtatmang!</div>
-                            <h1 className="font-bold xl:w-[70%] w-full text-[#0B7077] xl:text-[75px] text-[23px] m-5 md:text-[30px] md:w-[60%]">Onlayn kurslar orqali mahoratingizni oshiring!</h1>
-                            <button className="xl:w-[130px] xl:h-[35px] bg-[#F7641E] text-[#fff] font-bold rounded-lg ml-[20px] w-[120px] h-[40px]">Online kurs</button>
-                        </div>
-                        <div className="main2 xl:w-[70%] w-[100%] md:w-[60%]">
-                            <img src={person} alt="Person" className="xl:w-[590px] w-[400px] xl:mt-[-432px] xl:ml-[900px] mt-[-60px] md:mt-[-280px] md:ml-[350px]"/>
-                        </div>
-                    </div>
-                    <div className="img m-20 xl:w-[300px] xl:h-[300px] bg-[#D2E6E4] ml-[600px]  rounded-full hidden">
-                        <img src={pause} alt="Pause" />
-                    </div>
-                </div>
-            </div>
+    <header className="bg-[#D2E6E4] rounded-b-[35px] w-full h-[50vh] md:h-[40vh] xl:h-[69vh]">
+      <div className="container mx-auto p-4">
+        {/* Navbar */}
+        <nav className="flex justify-between items-center h-[70px] md:h-[80px] xl:h-[100px]">
+          <div className="w-[150px]">
+            <img src={logo} alt="Logo" className="w-full h-auto" />
+          </div>
+          <div className="hidden xl:flex gap-8 font-bold text-[16px]">
+            <NavLink to="">Bosh sahifa</NavLink>
+            <NavLink to="">Kariyeramiz</NavLink>
+            <NavLink to="">Biz haqimizda</NavLink>
+          </div>
+          <div className="flex items-center gap-4">
+            <button className="bg-[#77BF44] text-white font-bold rounded-lg px-4 py-2 md:px-6 md:py-2">Online kurs</button>
+            <i onClick={toggleMenu} className='bx bx-menu xl:hidden text-[35px] text-[#6B7280] cursor-pointer'></i>
+          </div>
+        </nav>
+
+        {/* Mobile Menu */}
+        {menuOpen && (
+          <div className="flex flex-col items-center gap-4 mt-4 xl:hidden">
+            <NavLink to="">Bosh sahifa</NavLink>
+            <NavLink to="">Kariyeramiz</NavLink>
+            <NavLink to="">Biz haqimizda</NavLink>
+          </div>
+        )}
+
+        {/* Main Section */}
+        <div className="flex flex-col xl:flex-row xl:justify-between items-center mt-8">
+          <div className="text-center xl:text-left xl:max-w-[50%]">
+            <p className="bg-white text-center font-bold text-[14px] md:text-[18px] xl:text-[20px] px-4 py-2 rounded-lg inline-block">Hech qachon o‘rganishni to‘xtatmang!</p>
+            <h1 className="text-[#0B7077] font-bold text-[25px] md:text-[35px] xl:text-[75px] mt-4">Onlayn kurslar orqali mahoratingizni oshiring!</h1>
+            <button className="bg-[#F7641E] text-white font-bold rounded-lg px-6 py-2 mt-4">Online kurs</button>
+          </div>
+          <div className="w-[80%] md:w-[60%] xl:w-[40%] mt-8 xl:mt-0">
+            <img src={person} alt="Person" className="w-full xl:block hidden" />
+          </div>
         </div>
-    </div>
+      </div>
+    </header>
   );
 }
 
